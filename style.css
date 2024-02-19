@@ -1,0 +1,35 @@
+.container {
+  display:flex;
+  flex-direction: column;
+  height: 600;
+  width: 400;
+  background-color: black;
+  border: red 3px solid;
+
+}
+
+.display {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  color: white;
+  border: pink 3px solid;
+  font-size: x-large;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+button {
+  background-color: grey;
+  color: white;
+  font-size: x-large;
+  width: 25%;
+  height: 60px;
+  border: orange 3px solid;
+}
