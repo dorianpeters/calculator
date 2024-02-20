@@ -1,11 +1,13 @@
-let firstNum, secondNum, operator;
+let firstNum;
+let secondNum;
+let operator;
 let displayContent = "";
 
-let buttons = document.querySelector(".buttons");
-let display = document.querySelector(".display");
+const buttons = document.querySelector(".buttons");
+const display = document.querySelector(".display");
 
 buttons.addEventListener("click", (event) => {
-  let buttonPressed = event.target.textContent;
+  const buttonPressed = event.target.textContent;
   if (isNaN(buttonPressed)) {
     // It's not a number
   } else {
