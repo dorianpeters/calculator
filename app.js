@@ -8,10 +8,10 @@ const display = document.querySelector(".display");
 
 buttons.addEventListener("click", (event) => {
   const buttonPressed = event.target.textContent;
+  // isNaN type coersion behavior is intentional as numbers are evaluated in string format.
   if (isNaN(buttonPressed)) {
-    // It's not a number
+    // Code that deal with operators
   } else {
-    // It is a number
     displayContent += event.target.textContent;
     display.textContent = displayContent;
   }
