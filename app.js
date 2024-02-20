@@ -1,14 +1,15 @@
 let firstNum, secondNum, operator;
 let displayContent = "";
 
-let buttons = document.querySelector('.buttons');
-let display = document.querySelector('.display');
+let buttons = document.querySelector(".buttons");
+let display = document.querySelector(".display");
 
-buttons.addEventListener('click', (event) => {
+buttons.addEventListener("click", (event) => {
   let buttonPressed = event.target.textContent;
-  if (isNaN(buttonPressed)) { // It's not a number
-
-  } else { // It is a number
+  if (isNaN(buttonPressed)) {
+    // It's not a number
+  } else {
+    // It is a number
     displayContent += event.target.textContent;
     display.textContent = displayContent;
   }
@@ -16,33 +17,37 @@ buttons.addEventListener('click', (event) => {
 
 // Functions
 
-function operate (num1, operator, num2) {
+function operate(num1, operator, num2) {
   switch (operator) {
-    case '+':
+    case "+":
       add(num1, num2);
-    case '-':
+      break;
+    case "-":
       subtract(num1, num2);
-    case '*':
+      break;
+    case "*":
       multiply(num1, num2);
-    case '/':
+      break;
+    case "/":
       divide(num1, num2);
+      break;
   }
 }
 
 function add(num1, num2) {
-  return num1 + num2;	
+  return num1 + num2;
 }
 
 function subtract(num1, num2) {
-	return num1 - num2;
+  return num1 - num2;
 }
 
 function multiply(num1, num2) {
-  return num1 * num2;	
+  return num1 * num2;
 }
 
 function divide(num1, num2) {
-	return num1 / num2;
+  return num1 / num2;
 }
 
 // Notes:
