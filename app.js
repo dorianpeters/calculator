@@ -1,5 +1,5 @@
-let firstNum;
-let secondNum;
+let firstNum = 0;
+let secondNum = 0;
 let operator;
 let hiddenNum;
 let priorButtonOperator;
@@ -27,7 +27,6 @@ buttons.addEventListener("click", (event) => {
         priorButtonOperator = false;
       }
       display.textContent += event.target.textContent;
-
       break;
     case "C":
       clearAll();
@@ -37,9 +36,9 @@ buttons.addEventListener("click", (event) => {
     case "*":
     case "/":
     case "=":
-      hiddenNum = Number(display.textContent);
+      secondNum = Number(display.textContent);
       priorButtonOperator = true;
-      operator = buttonPressed;
+      if (buttonPressed !== "=") operator = buttonPressed;
       display.textContent = operate(firstNum, operator, secondNum);
       firstNum = Number(display.textContent);
       break;
@@ -47,31 +46,6 @@ buttons.addEventListener("click", (event) => {
       alert("case default");
   }
 });
-
-//   if (isNaN(buttonPressed)) {
-//     if (buttonPressed === "C") {
-//       clearAll();
-//     } else {
-//       // if +,-,*,/,= pressed...
-//       operator = buttonPressed;
-//       if (firstNum === undefined) {
-//         firstNum = tempNum;
-//       } else {
-//         secondNum = tempNum;
-//         // Code probably wrong
-//         displayContent = operate(firstNum, operator, secondNum);
-//         display.textContent = displayContent;
-//       }
-//     }
-//   } else {
-//     if (operator !== "") {
-//       display.textContent = "";
-//     }
-//     displayContent += event.target.textContent;
-//     display.textContent = displayContent;
-//     tempNum = Number(displayContent);
-//   }
-// });
 
 // Functions
 function operate(num1, operator, num2) {
@@ -110,15 +84,9 @@ function divide(num1, num2) {
 }
 
 function clearAll() {
-  firstNum = undefined;
-  secondNum = undefined;
+  firstNum = 0;
+  secondNum = 0;
   tempNum = 0;
   operator = "";
   display.textContent = "";
 }
-
-// Notes:
-// Click number -> display on screen -> appended to a string
-// Click operator -> store that, string is coverted to a number
-// click number -> blanks out the display, start new string.
-// Click operator or equals ->  convert num2 from display to number, do calculation, dispaly answer, num1
