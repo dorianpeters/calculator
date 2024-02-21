@@ -1,39 +1,96 @@
 let firstNum;
 let secondNum;
 let operator;
-let displayContent = "";
+let hiddenNum;
+let priorButtonOperator;
 
 const buttons = document.querySelector(".buttons");
 const display = document.querySelector(".display");
 
 buttons.addEventListener("click", (event) => {
   const buttonPressed = event.target.textContent;
-  // isNaN type coersion behavior is intentional as numbers are evaluated in string format.
-  if (isNaN(buttonPressed)) {
-    // Code that deal with operators
-  } else {
-    displayContent += event.target.textContent;
-    display.textContent = displayContent;
+
+  // isNaN type coersion behavior is intentional as numbers are in string format.
+  switch (buttonPressed) {
+    case "1":
+    case "2":
+    case "3":
+    case "4":
+    case "5":
+    case "6":
+    case "7":
+    case "8":
+    case "9":
+    case "0":
+      if (priorButtonOperator) {
+        display.textContent = "";
+        priorButtonOperator = false;
+      }
+      display.textContent += event.target.textContent;
+
+      break;
+    case "C":
+      clearAll();
+      break;
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+    case "=":
+      hiddenNum = Number(display.textContent);
+      priorButtonOperator = true;
+      operator = buttonPressed;
+      display.textContent = operate(firstNum, operator, secondNum);
+      firstNum = Number(display.textContent);
+      break;
+    default:
+      alert("case default");
   }
 });
 
-// Functions
+//   if (isNaN(buttonPressed)) {
+//     if (buttonPressed === "C") {
+//       clearAll();
+//     } else {
+//       // if +,-,*,/,= pressed...
+//       operator = buttonPressed;
+//       if (firstNum === undefined) {
+//         firstNum = tempNum;
+//       } else {
+//         secondNum = tempNum;
+//         // Code probably wrong
+//         displayContent = operate(firstNum, operator, secondNum);
+//         display.textContent = displayContent;
+//       }
+//     }
+//   } else {
+//     if (operator !== "") {
+//       display.textContent = "";
+//     }
+//     displayContent += event.target.textContent;
+//     display.textContent = displayContent;
+//     tempNum = Number(displayContent);
+//   }
+// });
 
+// Functions
 function operate(num1, operator, num2) {
+  let result = 0;
   switch (operator) {
     case "+":
-      add(num1, num2);
+      result = add(num1, num2);
       break;
     case "-":
-      subtract(num1, num2);
+      result = subtract(num1, num2);
       break;
     case "*":
-      multiply(num1, num2);
+      result = multiply(num1, num2);
       break;
     case "/":
-      divide(num1, num2);
+      result = divide(num1, num2);
       break;
   }
+  return result;
 }
 
 function add(num1, num2) {
@@ -50,6 +107,14 @@ function multiply(num1, num2) {
 
 function divide(num1, num2) {
   return num1 / num2;
+}
+
+function clearAll() {
+  firstNum = undefined;
+  secondNum = undefined;
+  tempNum = 0;
+  operator = "";
+  display.textContent = "";
 }
 
 // Notes:
