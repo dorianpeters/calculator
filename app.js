@@ -17,10 +17,10 @@ buttons.addEventListener("click", (event) => {
     display.textContent += event.target.textContent;
   } else if (isOperator(buttonPressed)) {
     activeNum = Number(display.textContent);
-    priorButtonOperator = true;
     operator = buttonPressed;
     display.textContent = operate(storedNum, operator, activeNum);
-    firstNum = Number(display.textContent);
+    storedNum = Number(display.textContent);
+    priorButtonOperator = true;
   } else if (buttonPressed === "=") {
     alert("equals");
   } else if (buttonPressed === "C") {
@@ -51,9 +51,9 @@ function operate(num1, operator, num2) {
 }
 
 function clearAll() {
-  firstNum = 0;
-  secondNum = 0;
-  tempNum = 0;
+  storedNum = 0;
+  activeNum = 0;
+  // tempNum = 0;
   operator = "";
   display.textContent = "";
 }
