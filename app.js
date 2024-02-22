@@ -1,6 +1,6 @@
-let storedNum = 0;
-let activeNum = undefined;
-let operator = undefined;
+let storedNum = null;
+let activeNum = null;
+let operator = null;
 let priorButtonOperator;
 
 const buttons = document.querySelector(".buttons");
@@ -12,7 +12,7 @@ buttons.addEventListener("click", (event) => {
   const buttonPressed = event.target.textContent;
 
   if (isNum(buttonPressed)) {
-    if (operator === undefined || activeNum === undefined) {
+    if (operator === null || activeNum === null) {
       display.textContent = "";
       priorButtonOperator = false;
     }
@@ -56,10 +56,10 @@ function operate(num1, operator, num2) {
 }
 
 function clearAll() {
-  storedNum = 0;
-  activeNum = undefined;
-  operator = undefined;
-  display.textContent = storedNum;
+  storedNum = null;
+  activeNum = null;
+  operator = null;
+  display.textContent = 0;
 }
 
 function isNum(num) {
