@@ -1,28 +1,33 @@
 let storedNum = 0;
-let activeNum = 0;
-let operator = "=";
+let activeNum = undefined;
+let operator = undefined;
 let priorButtonOperator;
 
 const buttons = document.querySelector(".buttons");
 const display = document.querySelector(".display");
 
+display.textContent = 0;
+
 buttons.addEventListener("click", (event) => {
   const buttonPressed = event.target.textContent;
 
   if (isNum(buttonPressed)) {
+    if (operator === undefined || activeNum === undefined) {
+      display.textContent = "";
+      priorButtonOperator = false;
+    }
     if (priorButtonOperator) {
       display.textContent = "";
       priorButtonOperator = false;
     }
-    display.textContent += event.target.textContent;
-  } else if (isOperator(buttonPressed)) {
-    activeNum = Number(display.textContent);
-    operator = buttonPressed;
-    display.textContent = operate(storedNum, operator, activeNum);
+    display.textContent += buttonPressed;
     storedNum = Number(display.textContent);
+  } else if (isOperator(buttonPressed)) {
     priorButtonOperator = true;
+    operator = buttonPressed;
+    activeNum = Number(display.textContent);
   } else if (buttonPressed === "=") {
-    alert("equals");
+    display.textContent = operate(storedNum, operator, activeNum);
   } else if (buttonPressed === "C") {
     clearAll();
   } else {
@@ -52,14 +57,13 @@ function operate(num1, operator, num2) {
 
 function clearAll() {
   storedNum = 0;
-  activeNum = 0;
-  // tempNum = 0;
-  operator = "";
-  display.textContent = "";
+  activeNum = undefined;
+  operator = undefined;
+  display.textContent = storedNum;
 }
 
 function isNum(num) {
-  return !isNan(num);
+  return !isNaN(num);
 }
 
 function isOperator(char) {
