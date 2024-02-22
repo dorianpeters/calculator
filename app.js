@@ -9,20 +9,25 @@ const display = document.querySelector(".display");
 display.textContent = 0;
 
 buttons.addEventListener("click", (event) => {
-  const buttonPressed = event.target.textContent;
+  const buttonPressed = event.target.textContent; // stores button clicked
 
   if (isNum(buttonPressed)) {
+    // if a number is pressed
     if (operator === null || activeNum === null) {
       display.textContent = "";
       priorButtonOperator = false;
     }
+    // and the prior button pressed was an operator, clear display before showing new number
     if (priorButtonOperator) {
       display.textContent = "";
       priorButtonOperator = false;
     }
+    // display the number pressed
     display.textContent += buttonPressed;
+    // after each number is  pressed, stored the number as a number.
     storedNum = Number(display.textContent);
   } else if (isOperator(buttonPressed)) {
+    // if an operator is pressed
     priorButtonOperator = true;
     operator = buttonPressed;
     activeNum = Number(display.textContent);
