@@ -10,29 +10,34 @@ display.textContent = 0;
 
 buttons.addEventListener("click", (event) => {
   const buttonPressed = event.target.textContent; // stores button clicked
-
+  console.log("Button: " + buttonPressed);
+  // if a number is pressed
   if (isNum(buttonPressed)) {
-    // if a number is pressed
-    if (operator === null || activeNum === null) {
-      display.textContent = "";
-      priorButtonOperator = false;
-    }
     // and the prior button pressed was an operator, clear display before showing new number
-    if (priorButtonOperator) {
+    if (priorButtonOperator || display.textContent == 0) {
       display.textContent = "";
       priorButtonOperator = false;
     }
     // display the number pressed
     display.textContent += buttonPressed;
-    // after each number is  pressed, stored the number as a number.
-    storedNum = Number(display.textContent);
   } else if (isOperator(buttonPressed)) {
     // if an operator is pressed
     priorButtonOperator = true;
     operator = buttonPressed;
-    activeNum = Number(display.textContent);
+    if (storedNum === null) {
+      storedNum = Number(display.textContent);
+    } else {
+      activeNum = Number(display.textContent);
+    }
   } else if (buttonPressed === "=") {
+    priorButtonOperator = true;
+    if (storedNum === null) {
+      storedNum = Number(display.textContent);
+    } else {
+      activeNum = Number(display.textContent);
+    }
     display.textContent = operate(storedNum, operator, activeNum);
+    storedNum = Number(display.textContent);
   } else if (buttonPressed === "C") {
     clearAll();
   } else {
@@ -73,4 +78,12 @@ function isNum(num) {
 
 function isOperator(char) {
   return ["+", "-", "*", "/"].includes(char);
+}
+
+function saveNum(num) {
+  if (storedNum === null) {
+    storedNum = Number(display.textContent);
+  } else {
+    activeNum = Number(display.textContent);
+  }
 }
