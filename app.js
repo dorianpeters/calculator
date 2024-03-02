@@ -46,7 +46,7 @@ buttons.addEventListener("click", (event) => {
 });
 
 // Functions
-function operate(num1, operator, num2) {
+function operate(num1 = 0, operator = "+", num2 = 0) {
   let result = 0;
   switch (operator) {
     case "+":
@@ -60,6 +60,7 @@ function operate(num1, operator, num2) {
       break;
     case "/":
       if (num2 !== 0) result = num1 / num2;
+      else display.textContent = "Error";
       break;
   }
   return result;
