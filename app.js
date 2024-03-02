@@ -60,7 +60,6 @@ function operate(num1 = 0, operator = "+", num2 = 0) {
       break;
     case "/":
       if (num2 !== 0) result = num1 / num2;
-      else display.textContent = "Error";
       break;
   }
   return result;
@@ -79,12 +78,4 @@ function isNum(num) {
 
 function isOperator(char) {
   return ["+", "-", "*", "/"].includes(char);
-}
-
-function saveNum(num) {
-  if (storedNum === null) {
-    storedNum = Number(display.textContent);
-  } else {
-    activeNum = Number(display.textContent);
-  }
 }
