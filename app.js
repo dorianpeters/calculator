@@ -38,6 +38,7 @@ buttons.addEventListener("click", (event) => {
     }
     display.textContent = operate(storedNum, operator, activeNum);
     storedNum = Number(display.textContent);
+    if (isNaN(storedNum)) storedNum = null;
   } else if (buttonPressed === "C") {
     clearAll();
   } else {
@@ -60,6 +61,7 @@ function operate(num1 = 0, operator = "+", num2 = 0) {
       break;
     case "/":
       if (num2 !== 0) result = num1 / num2;
+      else result = "Error";
       break;
   }
   return result;
