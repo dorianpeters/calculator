@@ -60,8 +60,16 @@ function operate(num1 = 0, operator = "+", num2 = 0) {
       result = num1 * num2;
       break;
     case "/":
-      if (num2 !== 0) result = num1 / num2;
-      else result = "Error";
+      if (num2 !== 0) {
+        result = num1 / num2;
+        const maxLength = 8; // must be divible by 2. lol.
+        const numDecimals = maxLength / 2;
+        const resultString = result.toString();
+        if (resultString.length >= maxLength) {
+          result = Number(resultString);
+          result = result.toFixed(numDecimals);
+        }
+      } else result = "Error";
       break;
   }
   return result;
