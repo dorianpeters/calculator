@@ -4,19 +4,16 @@
   height: 600;
   width: 400;
   background-color: black;
-  border: red 3px solid;
-
 }
 
 .display {
   display: flex;
-  justify-content: right;
+  justify-content: end;
   align-items: center;
   height: 100px;
-  width: 100%;
+  width: 98%;
   color: white;
-  border: pink 3px solid;
-  font-size: x-large;
+  font-size: 6vh;
 }
 
 .buttons {
@@ -28,8 +25,12 @@
 button {
   background-color: grey;
   color: white;
-  font-size: x-large;
+  font-size: 3vh;
   width: 25%;
   height: 60px;
-  border: orange 3px solid;
+  border: black 2px solid;
+}
+
+.operator {
+  background-color:blue;
 }
