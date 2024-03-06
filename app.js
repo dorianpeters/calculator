@@ -10,7 +10,6 @@ display.textContent = 0;
 
 buttons.addEventListener("click", (event) => {
   const buttonPressed = event.target.textContent; // stores button clicked
-  console.log("Button: " + buttonPressed);
   // if a number is pressed
   if (isNum(buttonPressed)) {
     // and the prior button pressed was an operator, clear display before showing new number
